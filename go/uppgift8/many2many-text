@@ -1,0 +1,14 @@
+Fråga: Vad händer om man byter plats på satserna wgp.Wait() och close(ch) i slutet av main-funktionen?
+Svar: Då kommer väntar man inte på att all skickas, alltså kan det hända att man försöker hämta eller skicka data över en tom kanal.
+
+Fråga: Vad händer om man flyttar close(ch) från main-funktionen och i stället stänger kanalen i slutet av funktionen Produce?
+Svar: Efter att den första gorutinen exekverats kommer kanalen att stängas, då kan det hända att man skriver eller hämtar data från en tom kanal.
+
+Fråga: Vad händer om man tar bort satsen close(ch) helt och hållet?
+Svar: Kanalen stängs inte, men programmet avslutas eftersom att main-tråden når sitt slut.
+
+Fråga: Vad händer om man ökar antalet konsumenter från 2 till 4?
+Svar: Alla konsumenter får du en bit av kakan, viss prestandaskillnad märks av.
+
+Fråga: Kan man vara säker på att alla strängar blir utskrivna innan programmet stannar?
+Svar: Nej

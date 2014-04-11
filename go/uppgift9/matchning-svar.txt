@@ -1,0 +1,11 @@
+Vad händer om man tar bort go-kommandot från Seek-anropet i main-funktionen?
+Eftersom att kanalen match är buffrad så kommer alltid exekveras som förväntat
+
+Vad händer om man byter deklarationen wg := new(sync.WaitGroup) mot var wg sync.WaitGroup och parametern wg *sync.WaitGroup mot wg sync.WaitGroup?
+Ifall pointer inte används så kopieras waitgroupen, funktionsanrop görs alltså på den nya kopian.
+
+Vad händer om man tar bort bufferten på kanalen match?
+Deadlock, eftersom att antalet personer är udda, ett meddellande kommer skickas som ingen kan ta emot.
+
+Vad händer om man tar bort default-fallet från case-satsen i main-funktionen?
+Inget eftersom att antalet personer är udda, då kommer alltid det första caset stämma.
